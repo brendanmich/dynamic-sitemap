@@ -1,0 +1,67 @@
+{
+	"name": "dynamic-sitemap",
+	"version": "0.1.0",
+	"main": "node/index.js",
+	"scripts": {
+		"start": "node node/index.js",
+		"development": "ENV=development nodemon node/index.js",
+		"qa": "ENV=qa node node/index.js",
+		"staging": "ENV=staging node node/index.js",
+		"production": "ENV=production node node/index.js",
+		"lint": "npm-run-all -p lint:code lint:css lint:ejs",
+		"lint:code": "eslint .",
+		"lint:fix": "eslint --fix .",
+		"format": "npm run prettier -- --write",
+		"prettier": "prettier \"**/*.{html,md,css,scss,yaml,yml}\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/brendanmich/dynamic-sitemap"
+	},
+	"nodemonConfig": {
+		"ignore": [
+			".git",
+			"config/*",
+			"db/*",
+			"logs/*",
+			"models/*",
+			"src/*",
+			"build/*",
+			"views/*"
+		],
+		"ext": "js,mjs,json,ejs,html,txt"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"dotenv": "~7.0.0",
+		"express": "^4.17.1",
+		"xml2js": "^0.4.23"
+	},
+	"devDependencies": {
+		"eslint": "^6.8.0",
+		"eslint-config-airbnb-base": "^14.1.0",
+		"eslint-plugin-import": "^2.20.2",
+		"eslint-plugin-node": "^11.1.0",
+		"glob": "^7.1.6",
+		"husky": "^4.2.5",
+		"lint-staged": "^10.2.2",
+		"nodemon": "^2.0.2",
+		"npm-run-all": "^4.1.5",
+		"prettier": "2.0.5",
+		"rimraf": "^3.0.2"
+	},
+	"engines": {
+		"node": ">=12.10.0 <14.0.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{html,md,css,scss,yaml,yml}": "prettier --write",
+		"*.js": "eslint --fix",
+		"*.ejs": "ejslint",
+		"*.css": "stylelint"
+	}
+}
