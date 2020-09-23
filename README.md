@@ -17,7 +17,7 @@ Snippets to generate dynamic sitemaps for Express/Node.js and PHP projects
 
 ## Format
 
-We're generating these sitemaps based on the Google standard:
+This project generates these sitemaps based on the Google standard:
 
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
