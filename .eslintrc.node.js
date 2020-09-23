@@ -5,9 +5,7 @@ module.exports = {
 		node: true,
 		jest: true
 	},
-	globals: {
-		Parse: true,
-	},
+	globals: {},
 	rules: {
 		'array-element-newline': ['error', 'always'],
 		'comma-dangle': 0,
